@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <main class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="title-ascii">&gt;_</span> ASCII Art Generator
+            </h1>
+            <p class="subtitle">Transform your images into beautiful text art</p>
+        </header>
+
+        <section class="upload-section">
+            <div class="upload-zone" id="uploadZone">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <div class="upload-content">
+                    <div class="upload-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <p class="upload-text">Drop your image here or <span class="upload-link">browse</span></p>
+                    <p class="upload-hint">Supports JPG, PNG, GIF, WebP</p>
+                </div>
+            </div>
+
+            <div class="controls" id="controls">
+                <div class="control-group">
+                    <label for="widthSlider">Width</label>
+                    <input type="range" id="widthSlider" min="40" max="200" value="100">
+                    <span id="widthValue">100</span>
+                </div>
+                <div class="control-group">
+                    <label for="charsetSelect">Character Set</label>
+                    <select id="charsetSelect">
+                        <option value="standard">Standard</option>
+                        <option value="detailed">Detailed</option>
+                        <option value="blocks">Blocks</option>
+                        <option value="minimal">Minimal</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="invertCheck">
+                        <input type="checkbox" id="invertCheck">
+                        Invert Colors
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-section" id="previewSection">
+            <div class="preview-header">
+                <h2>Preview</h2>
+                <div class="preview-actions">
+                    <button class="btn btn-secondary" id="downloadBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download
+                    </button>
+                    <button class="btn btn-primary" id="copyBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        <span id="copyText">Copy to Clipboard</span>
+                    </button>
+                </div>
+            </div>
+            <div class="ascii-output-wrapper">
+                <pre class="ascii-output" id="asciiOutput"></pre>
+            </div>
+        </section>
+
+        <canvas id="canvas" hidden></canvas>
+    </main>
+
+    <footer class="footer">
+        <p>Made with <span class="heart">♥</span> and lots of characters</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
